@@ -2,14 +2,17 @@ define(['jquery'], function ($) {
   var $floater = $('#floater')
     , $start = $floater.find('.start')
     , $end = $floater.find('.end')
+    , $name = $floater.find('.name')
     , start = '00:00'
     , end = '00:00'
+    , name = ''
     , showing = false
     ;
 
   function render() {
     $start.html(start);
     $end.html(end);
+    $name.html(name);
     $floater.toggle(showing);
   }
 
@@ -19,9 +22,10 @@ define(['jquery'], function ($) {
     }
   }
 
-  $(document).on('floater:in', function (ev, startTime, endTime) {
+  $(document).on('floater:in', function (ev, startTime, endTime, nameVal) {
     start = startTime;
     end = endTime;
+    name = nameVal;
     showing = true;
     render();
   }).on('floater:out', function () { showing = false; render(); });
