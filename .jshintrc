@@ -1,0 +1,4 @@
+{
+  "globals": { "require": true, "define": true, "d3": true }
+  "laxcomma": true
+}

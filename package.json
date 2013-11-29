@@ -1,0 +1,12 @@
+{
+  "volo": {
+    "dependencies": {
+      "d3-plugins": "github:d3/d3-plugins/master",
+      "jquery": "github:jquery/jquery/2.0.3",
+      "d3": "github:mbostock/d3/v3.3.10",
+      "require": "github:jrburke/requirejs/2.1.9",
+      "TwitchTVExpose": "github:xjackk/TwitchTVExpose/master",
+      "timezone-js": "github:mde/timezone-js/v0.4.6"
+    }
+  }
+}
