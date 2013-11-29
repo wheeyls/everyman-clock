@@ -1,17 +1,17 @@
-define(['d3', 'period', 'jquery'], function (d3, period, $) {
+define(['d3', 'period', 'jquery', 'hongkongtime'], function (d3, period, $, hkt) {
   'use strict';
 
   function clock(times) {
     var periods = []
       , me
-      , now = period(new Date(), new Date(), { live: true })
+      , now = period(new Date(), new Date(), { name: 'now', live: true })
       , base = period('0:00', '24:00')
       , i, ii
       ;
 
     me = {
-      addPeriod: function (start, end) {
-        var p = period(start, end);
+      addPeriod: function (start, end, opts) {
+        var p = period(start, end, opts);
         periods.push(p);
 
         $(p).on('change', me.onChange);
@@ -36,8 +36,10 @@ define(['d3', 'period', 'jquery'], function (d3, period, $) {
     };
 
     for (i = 0, ii = times.length; i < ii; i++) {
-      me.addPeriod(times[i][0], times[i][1]);
+      me.addPeriod(times[i][0], times[i][1], { name: 'sleep' });
     }
+
+    me.addPeriod(hkt(new Date()), hkt(new Date(), 3), { name: 'hk' });
 
     $(now).on('change', me.onChange);
 

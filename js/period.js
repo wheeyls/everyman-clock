@@ -3,7 +3,7 @@ define(['point', 'jquery'], function (point, $) {
     var me
       , start = point(startTime)
       , end = point(endTime)
-      , options = $.extend({ live: false }, opts)
+      , options = $.extend({ live: false, name: '' }, opts)
       ;
 
     function updateTimer() {
@@ -17,6 +17,10 @@ define(['point', 'jquery'], function (point, $) {
       updateLiveDate: function () {
         start.time = new Date();
         end.time = new Date();
+      }
+
+    , get name() {
+        return options.name;
       }
 
     , set live(val) {

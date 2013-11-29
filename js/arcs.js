@@ -24,7 +24,7 @@ define(['jquery', 'd3'], function ($, d3) {
         .style('fill', function (d, i) {
           if (i === 0) {
             return 'gray';
-          } else if (d.live === true) {
+          } else if (d.live === true || d.name === 'hk') {
             return 'red';
           } else {
             return 'lightblue';
@@ -32,10 +32,10 @@ define(['jquery', 'd3'], function ($, d3) {
         })
         .attr('d', function (d) { return d.arc(w * .45)(d) })
         .on('mouseover', function (d, i) {
-          i > 0 && $(document).trigger('floater:in', [d.start.toString(), d.end.toString()]);
+          i > 0 && $(document).trigger('floater:in', [d.start.toString(), d.end.toString(), d.name]);
         })
         .on('mouseout', function (d, i) {
-          i > 0 && $(document).trigger('floater:out', [d.start.toString(), d.end.toString()]);
+          i > 0 && $(document).trigger('floater:out', [d.start.toString(), d.end.toString(), d.name]);
         })
         ;
     }
