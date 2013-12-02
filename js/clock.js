@@ -6,7 +6,6 @@ define(['d3', 'period', 'jquery', 'hongkongtime'], function (d3, period, $, hkt)
       , me
       , now = period(new Date(), new Date(), { name: 'now', live: true })
       , base = period('0:00', '24:00')
-      , i, ii
       ;
 
     me = {
@@ -35,11 +34,11 @@ define(['d3', 'period', 'jquery', 'hongkongtime'], function (d3, period, $, hkt)
       }
     };
 
-    for (i = 0, ii = times.length; i < ii; i++) {
-      me.addPeriod(times[i][0], times[i][1], { name: 'sleep' });
-    }
+    times.forEach(function (time) {
+      me.addPeriod(time[0], time[1], { name: 'sleep' });
+    })
 
-    me.addPeriod(hkt(new Date()), hkt(new Date(), 3), { name: 'hk' });
+    // me.addPeriod(hkt(new Date()), hkt(new Date(), 3), { name: 'hk' });
 
     $(now).on('change', me.onChange);
 
