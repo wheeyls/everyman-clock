@@ -5,14 +5,16 @@ requirejs.config({
 });
 
 require(['clock', 'arcs', 'floater'], function (clock, arcs) {
-  var current = clock([
+  /* arcs(clock([
       ['22:00', '25:30']
     , ['5:10', '5:30']
     , ['9:10', '9:30']
     , ['15:40', '16:00']
-    ])
-    ;
+    ])); */
 
-  arcs(current);
-  window.current = current;
+  arcs(clock([
+      ['22:00', '25:30']
+    , ['5:00', '6:30']
+    , ['14:30', '15:00']
+  ]));
 });
